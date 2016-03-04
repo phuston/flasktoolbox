@@ -17,3 +17,19 @@ In the introduction, we defined Flask as a 'web framework', but what does that a
 When you open up a web page in your browser (e.g. Chrome, Firefox, etc.), it makes an HTTP request to a server somewhere in the world. This could be something like `GET me the home page`. This server handles this request, sending back data (this can be in the form of HTML, JSON, XML, etc.), which is rendered by your browser. 
 
 This is where Flask comes in - it allows you to create the logic to make a web server quickly in Python. You can write logic that will execute when a request is made for one of your routes (e.g. `www.mycoolwebsite.com/home`)
+
+#### Hello World in Flask
+
+Let's write some Flask. 
+
+```
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return 'Hello World!'
+
+if __name__ == '__main__':
+    app.run()
+```
