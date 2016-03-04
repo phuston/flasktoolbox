@@ -20,7 +20,7 @@ This is where Flask comes in - it allows you to create the logic to make a web s
 
 #### Hello World in Flask
 
-Let's write some Flask. 
+Let's write some Flask. A simple Hello World application written in Flask can be as simple as this:
 
 ```
 from flask import Flask
@@ -33,3 +33,24 @@ def hello_world():
 if __name__ == '__main__':
     app.run()
 ```
+
+Write this, save it as something like `hello.py`, and run it in terminal. Make sure to not call your application flask.py because this would conflict with Flask itself.
+
+```
+$ python hello.py
+ * Running on http://127.0.0.1:5000/
+```
+
+Now head over to http://127.0.0.1:5000/, and you should see your hello world greeting.
+
+In case you're curious `127.0.0.1` points to your local computer, and `5000` is the port it's listening on. 
+
+What did that actually do? Let's walk through the steps.
+
+1. First we imported the Flask class.
+2. Next we create an instance of this class. The first argument is the name of the application’s module or package. If you are using a single module (as in this example), you should use __name__ because depending on if it’s started as application or imported as module the name will be different ('__main__' versus the actual import name). This is needed so that Flask knows where to look for templates, static files, and so on.
+3. We then use the route() decorator to tell Flask what URL should trigger our function. In this case our route is `/`, commonly referred to as the `index` of a page. It refers to the 
+4. The function is given a name which is also used to generate URLs for that particular function, and returns the message we want to display in the user’s browser.
+5. Finally we use the run() function to run the local server with our application. The if __name__ == '__main__': makes sure the server only runs if the script is executed directly from the Python interpreter and not used as an imported module.
+
+To stop the server, hit `ctrl+c`
