@@ -54,3 +54,46 @@ What did that actually do? Let's walk through the steps.
 5. Finally we use the run() function to run the local server with our application. The if __name__ == '__main__': makes sure the server only runs if the script is executed directly from the Python interpreter and not used as an imported module.
 
 To stop the server, hit `ctrl+c`
+
+#### What's this routing business?
+
+In our hello world, example, we had one route denoted by the decorator `@app.route('/')`. Again, this 'decorator' tells the Flask app that any incoming requests for GET `/` will run the function we called `hello_world()`
+
+Here are a couple more quick examples - 
+
+```
+@app.route('/')
+def index():
+    return 'Index Page'
+
+@app.route('/hello')
+def hello():
+    return 'Hello World'
+```
+
+Pretty simple, right? What happens when we want to do something **useful** - e.g. display something other than text?
+
+#### Let's Serve Some HTML!
+
+HTML (HyperText Markup Language) is the standard markup language used to create web pages. In addition to sending back strings, Flask can send back HTML files to the client, which will be rendered in the browser. Let's get to work creating a basic HTML document. 
+
+Let's start by creating a file called `index.html` 
+
+```
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>
+         A Small Hello 
+      </title>
+   </head>
+<body>
+   <h1>Hi</h1>
+   <p>This is very minimal "hello world" HTML document.</p> 
+</body>
+</html>
+```
+
+Create a new directory called `templates`, and save this new document as `index.html` there.
+
+Let's figure out how to show this document now.
