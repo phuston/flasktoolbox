@@ -146,6 +146,15 @@ $ python hello.py
 
 to run the application, and head over to http://127.0.0.1:5000/, and you should see your hello world greeting. It might not look very different, but you're now working with a much more powerful format of representing information through HTML. 
 
+#### Getting Input
+
+What use is a web application if you can't get any data back from the user? Let's set up a simple page. Here's what our end goal is.
+
+1. A simple login page upon opening the web page. This will have an input form where the user will input their name. 
+2. Upon clicking a submit button, the user will be greeted by a page that says their name.
+
+Let's get started.
+
 ### Going Further
 
 1. Learn more about [Django](https://www.djangoproject.com/) - an alternative to Flask. They don't have many major differences other than some small quirks in conventions and style. See [here](https://wakatime.com/blog/25-pirates-use-flask-the-navy-uses-django) for more analysis.
