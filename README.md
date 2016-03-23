@@ -97,3 +97,59 @@ Let's start by creating a file called `index.html`
 Create a new directory called `templates`, and save this new document as `index.html` there.
 
 Let's figure out how to show this document now.
+
+#### Rendering Pages
+To render a template you can use the `render_template()` method. All you have to do is provide the name of the template and the variables you want to pass to the template engine as keyword arguments. Here’s a simple example of how to render a template:
+
+```
+from flask import render_template
+
+@app.route('/hello/')
+@app.route('/hello/<name>')
+def hello(name=None):
+    return render_template('hello.html', name=name)
+```
+And here is an example template that will work with the above snippet: 
+
+```
+<!doctype html>
+<title>Hello from Flask</title>
+{% if name %}
+  <h1>Hello {{ name }}!</h1>
+{% else %}
+  <h1>Hello World!</h1>
+{% endif %}
+```
+
+You may have noticed something really cool that happened here. In our route `/hello/<name>`, we're allowing someone to make a request with an additional 'name' parameter that can be anything. We can then use this `name` and render it in our html template `hello.html`. We use the {___} syntax to insert outside variables into the template. Additionally, we can insert pythonic flow logic directly into our html page - see `{% if name %}`. We could go on for years about all of the power of jinja templating, but I'll leave that joy to this [wonderful article](http://jinja.pocoo.org/docs/dev/templates/).
+
+Getting back to our simple Hello World app, let's add in a route to display our index.html we created above.
+
+```
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def hello_world():
+    return render_template('index.html')
+
+if __name__ == '__main__':
+    app.run()
+```
+
+And that's it! Again, follow the instructions
+
+```
+$ python hello.py
+ * Running on http://127.0.0.1:5000/
+```
+
+to run the application, and head over to http://127.0.0.1:5000/, and you should see your hello world greeting. It might not look very different, but you're now working with a much more powerful format of representing information through HTML. 
+
+### Going Further
+
+1. Learn more about [Django](https://www.djangoproject.com/) - an alternative to Flask. They don't have many major differences other than some small quirks in conventions and style. See [here](https://wakatime.com/blog/25-pirates-use-flask-the-navy-uses-django) for more analysis.
+2. Want to keep track of some data in your web app? Instead of using a .txt file or a pickle file, it's common practice in nearly any web app to use a database. A few especially well-known database choices are MySql, SQLite, or PostgreSQL (which all use [Structured Query Laugage](https://www.codecademy.com/learn/learn-sql) to manipulate all stored, as do many other common [relational databases](https://en.wikipedia.org/wiki/Relational_database)) You also may have heard some buzz about MongoDb, which uses an unstructured data format in `documents` similar to JSON. Mongo is stupidly easy to set up and use, but I'd stop and think first before jumping right in. It may be the easy choice, but representing your data intellengently in a relational table can be much more effective and less of a headache later on.
+3. But HTML is so ugly! HTML alone is very ugly. That's why we use CSS (Cascading Style Sheets) to add some extra flair and style to our HTML. You can change pretty much anything about HTML - colors, shapes, sizes, placement, etc. with CSS rules. It's also pretty simple to write. Check [this resource](http://www.w3schools.com/css/css_intro.asp) out to learn more about CSS.
+
+
