@@ -1,5 +1,5 @@
 ## Flask 
-
+------------
 #### Introduction
 Flask is a lightweight and powerful web framework for Python. It's easy to learn and simple to use, allowing you to build your web app in a short amount of time.
 
@@ -146,19 +146,40 @@ $ python hello.py
 
 to run the application, and head over to http://127.0.0.1:5000/, and you should see your hello world greeting. It might not look very different, but you're now working with a much more powerful format of representing information through HTML. 
 
-#### Getting Input
+#### Getting Input from the User
 
-What use is a web application if you can't get any data back from the user? Let's set up a simple page. Here's what our end goal is.
+What use is a web application if you can't get any data back from the user? Let's set up a simple app. Here are our end specifications:
 
-1. A simple login page upon opening the web page. This will have an input form where the user will input their name. 
-2. Upon clicking a submit button, the user will be greeted by a page that says their name.
+1. Upon visiting the index page at http://127.0.0.1:5000/, the user will be greeted by a page that says hello, and includes an input form that requests their name, age, and favorite SoftDes Ninja.
+2. Upon clicking the 'Submit' button, the data from the form will be sent via a POST request to the Flask backend at the route `POST /login`
+3. The Flask backend will handle the request to `POST /login` and perform some simple validation on the user input - simply check to see if they exist. 
+4. If all the information is present, the app will render a 'profile' page for the user - presenting their name and age. Regardless of their input for final question, their favorite SoftDes ninja, the app will display `Patrick Huston`
+5. If all the information is not present, the app will render a simple error page, which will include some indication that they didn't include all the required information, in addition to a button that will redirect the user back to the home page.
 
-Let's get started.
+It will be up to you to make this happen. If you feel confident in your ability to implement this, go for it! If you'd like more scaffolding, continue reading.
+
+#### Tips and Tricks
+
+To complete this exercise, the official Flask documentation will get you pretty far. There is the [full documentation](http://flask.pocoo.org/docs/0.10/#user-s-guide) and the [quickstart guide](http://flask.pocoo.org/docs/0.10/quickstart/), both of should be pretty helpful.
+
+1.  *Html Forms*
+To make forms in HTML, check out [this resource](http://www.w3schools.com/html/html_forms.asp). For even more information, check [this](http://tinyurl.com/htmlforms) out.
+
+2.  *Sending POST Requests*
+To send the data from the form in a POST request, use an input with type `submit`, and set the action of the form to reflect the destination in your routes. 
+
+3. *Handling POST Requests*
+To learn more about handling post requests in Flask, check this resource from the [Flask documentation](http://flask.pocoo.org/docs/0.10/quickstart/#http-methods) out.
+
+4 + 5. *Accessing the Form Data*
+To access the form data, check out [this documentation](http://flask.pocoo.org/docs/0.10/quickstart/#the-request-object) on using the Flask `request` utility.
+
 
 ### Going Further
 
-1. Learn more about [Django](https://www.djangoproject.com/) - an alternative to Flask. They don't have many major differences other than some small quirks in conventions and style. See [here](https://wakatime.com/blog/25-pirates-use-flask-the-navy-uses-django) for more analysis.
-2. Want to keep track of some data in your web app? Instead of using a .txt file or a pickle file, it's common practice in nearly any web app to use a database. A few especially well-known database choices are MySql, SQLite, or PostgreSQL (which all use [Structured Query Laugage](https://www.codecademy.com/learn/learn-sql) to manipulate all stored, as do many other common [relational databases](https://en.wikipedia.org/wiki/Relational_database)) You also may have heard some buzz about MongoDb, which uses an unstructured data format in `documents` similar to JSON. Mongo is stupidly easy to set up and use, but I'd stop and think first before jumping right in. It may be the easy choice, but representing your data intellengently in a relational table can be much more effective and less of a headache later on.
-3. But HTML is so ugly! HTML alone is very ugly. That's why we use CSS (Cascading Style Sheets) to add some extra flair and style to our HTML. You can change pretty much anything about HTML - colors, shapes, sizes, placement, etc. with CSS rules. It's also pretty simple to write. Check [this resource](http://www.w3schools.com/css/css_intro.asp) out to learn more about CSS.
+1. **Learn more about [Django](https://www.djangoproject.com/)** - an alternative to Flask. They don't have many major differences other than some small quirks in conventions and style. See [here](https://wakatime.com/blog/25-pirates-use-flask-the-navy-uses-django) for more analysis.
+2. **Want to keep track of some data in your web app?** Instead of using a .txt file or a pickle file, it's common practice in nearly any web app to use a database. A few especially well-known database choices are MySql, SQLite, or PostgreSQL (which all use [Structured Query Laugage](https://www.codecademy.com/learn/learn-sql) to manipulate all stored, as do many other common [relational databases](https://en.wikipedia.org/wiki/Relational_database)) You also may have heard some buzz about MongoDb, which uses an unstructured data format in `documents` similar to JSON. Mongo is stupidly easy to set up and use, but I'd stop and think first before jumping right in. It may be the easy choice, but representing your data intellengently in a relational table can be much more effective and less of a headache later on.
+3. **But HTML is so ugly!** HTML alone **is** very ugly. That's why we use CSS (Cascading Style Sheets) to add some extra flair and style to our HTML. You can change pretty much anything about HTML - colors, shapes, sizes, placement, etc. with CSS rules. It's also pretty simple to write. Check [this resource](http://www.w3schools.com/css/css_intro.asp) out to learn more about CSS.
+4. **What about making my website dynamic?** SoftDes may be a class in Python, but we can venture out a little and use some [jQuery](http://www.w3schools.com/jquery/jquery_intro.asp). jQuery might seem scary, but you use it in a way similar to adding/linking CSS styling to your HTML. You write scripts in JavaScript (which isn't too difficult), which can allow you to add beautiful responsive and dynamic content to your web app. 
 
 
